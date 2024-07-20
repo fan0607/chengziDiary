@@ -16,7 +16,7 @@ const base = '/chengzidiary/'
 export default defineConfig({
   // 继承博客主题(@sugarat/theme)
   extends: blogTheme,
-  base,
+  // base,
   // base,
   lang: 'zh-cn',
   title: '橙子日记',
