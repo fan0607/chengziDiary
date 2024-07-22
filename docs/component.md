@@ -1,5 +1,6 @@
 ---
 description: 默认支持流程图，tabs面板，待办列表，作品页面
+publish: false
 ---
 
 # 内置第三方插件能力

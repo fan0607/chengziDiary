@@ -1,3 +1,9 @@
+---
+comment: true
+tag:
+    - cesium
+sticky: 1
+---
 # 自定义shader
 ## 前言
 cesium中想要实现一些炫酷的特效,一定会用到`shader`，但国内cesium的shader比较少，我会从**最基础的内容**入手，展示如何实现一个如图效果的`shader`。
