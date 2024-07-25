@@ -6,9 +6,9 @@ categories:
   - 教程
 sticky: 1
 ---
-# obsidian接入AI模型或服务
+# Obsidian与AI的融合指南
 >[!note]
->obsidian和AI融合得很好的方案
+>obsidian接入AI模型或服务融合得很好的方案
 
 :::tip
 最好的教程在[官方仓库](https://github.com/brianpetro/obsidian-smart-connections)
