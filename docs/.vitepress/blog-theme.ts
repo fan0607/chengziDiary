@@ -17,6 +17,22 @@ import { getThemeConfig } from '@sugarat/theme/node'
 
 // 所有配置项，详见文档: https://theme.sugarat.top/
 const blogTheme = getThemeConfig({
+  friend: [
+    {
+      nickname: '工作餐避坑系统',
+      des: '今天吃什么',
+      avatar:
+        '/logo.png',
+      url: 'https://tidy-comet-d04.notion.site/d658760b55ce4da9a80742503a3735dc?pvs=74'
+    },
+  ],
+  comment: {
+    repo: 'fan0607/chengziDiary',
+    repoId: 'R_kgDOMYy8Xw',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOMYy8X84ChKUa',
+    inputPosition: 'top',
+  },
   // 开启RSS支持
   // RSS,
 
