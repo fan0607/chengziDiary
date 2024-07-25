@@ -1,10 +1,9 @@
 ---
 comment: true
 categories:
-   - 笔记
-   - AI
-   - obsidian
-   - 教程
+  - AI
+  - obsidian
+  - 教程
 sticky: 1
 ---
 # obsidian接入AI模型或服务
@@ -67,6 +66,7 @@ sticky: 1
 官网对话
 ![](../public/Pasted%20image%2020240725174719.png)
 自己的ob
+两个的回答都算过关，但api结合**本地上下文**的能力有些出乎意料，推荐多试试
 ## 6. 探索高级AI集成  
 对于更高级的用户可以：
 - 考虑将Dataview插件与AI服务结合使用
