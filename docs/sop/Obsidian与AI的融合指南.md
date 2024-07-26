@@ -6,7 +6,7 @@ categories:
   - 教程
 sticky: 1
 ---
-# obsidian接入AI模型或服务
+# obsidian接入AI模型/服务
 >[!note]
 >obsidian和AI融合得很好的方案
 
