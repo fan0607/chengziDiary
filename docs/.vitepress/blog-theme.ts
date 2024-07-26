@@ -25,6 +25,13 @@ const blogTheme = getThemeConfig({
         '/logo.png',
       url: 'https://tidy-comet-d04.notion.site/d658760b55ce4da9a80742503a3735dc?pvs=74'
     },
+    {
+      nickname: '粥里有勺糖',
+      des: '你的指尖,拥有改变世界的力量',
+      avatar:
+        'https://img.cdn.sugarat.top/mdImg/MTY3NDk5NTE2NzAzMA==674995167030',
+      url: 'https://sugarat.top'
+    },
   ],
   comment: {
     repo: 'fan0607/chengziDiary',
