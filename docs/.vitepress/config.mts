@@ -1,7 +1,7 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress";
 
 // 导入主题的配置
-import { blogTheme } from './blog-theme'
+import { blogTheme } from "./blog-theme";
 
 // 如果使用 GitHub/Gitee Pages 等公共平台部署
 // 通常需要修改 base 路径，通常为“/仓库名/”
@@ -12,49 +12,53 @@ import { blogTheme } from './blog-theme'
 
 // Vitepress 默认配置
 // 详见文档：https://vitepress.dev/reference/site-config
-const base = '/chengzidiary/'
+const base = "/chengzidiary/";
 export default defineConfig({
   // 继承博客主题(@sugarat/theme)
   extends: blogTheme,
   // base,
   // base,
-  lang: 'zh-cn',
-  title: '橙子日记',
-  description: '橙子日记',
+  lang: "zh-cn",
+  title: "橙子日记",
+  description: "橙子日记",
   lastUpdated: true,
   // 详见：https://vitepress.dev/zh/reference/site-config#head
   head: [
     // 配置网站的图标（显示在浏览器的 tab 上）
     // ['link', { rel: 'icon', href: `${base}favicon.ico` }], // 修改了 base 这里也需要同步修改
-    ['link', { rel: 'icon', href: '/favicon.ico' }]
+    ["link", { rel: "icon", href: "/favicon.ico" }],
   ],
   themeConfig: {
     // 展示 2,3 级标题在目录中
     outline: {
-      level: 'deep',
-      label: '目录'
+      level: "deep",
+      label: "目录",
     },
     // 默认文案修改
-    returnToTopLabel: '回到顶部',
-    sidebarMenuLabel: '相关文章',
-    lastUpdatedText: '上次更新于',
+    returnToTopLabel: "回到顶部",
+    sidebarMenuLabel: "相关文章",
+    lastUpdatedText: "上次更新于",
 
     // 设置logo
-    logo: '/logo.png',
+    logo: "/logo.png",
     // editLink: {
     //   pattern:
     //     'https://github.com/ATQQ/sugar-blog/tree/master/packages/blogpress/:path',
     //   text: '去 GitHub 上编辑内容'
     // },
     nav: [
-      { text: '首页', link: '/' },
+      { text: "首页", link: "/" },
+      {
+        text: "今天吃什么",
+        link: "https://tidy-comet-d04.notion.site/d658760b55ce4da9a80742503a3735dc?pvs=74",
+      },
       // { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
     ],
     socialLinks: [
       {
-        icon: 'github',
-        link: 'https://github.com/fan0607'
-      }
-    ]
-  }
-})
+        icon: "github",
+        link: "https://github.com/fan0607",
+      },
+    ],
+  },
+});
