@@ -19,8 +19,8 @@ import { getThemeConfig } from '@sugarat/theme/node'
 const blogTheme = getThemeConfig({
   friend: [
     {
-      nickname: '工作餐避坑系统',
-      des: '今天吃什么',
+      nickname: '今天吃什么',
+      des: '工作餐避坑',
       avatar:
         '/logo.png',
       url: 'https://tidy-comet-d04.notion.site/d658760b55ce4da9a80742503a3735dc?pvs=74'
