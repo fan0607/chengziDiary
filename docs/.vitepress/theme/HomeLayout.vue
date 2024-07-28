@@ -1,15 +1,33 @@
 <script setup>
+import { ref, onMounted, computed } from 'vue'
 import BlogTheme from '@sugarat/theme'
 import ThreeScene from './ThreeScene.vue'
 
 const { Layout } = BlogTheme
+
+const isMobile = ref(false)
+
+const shouldRenderThreeScene = computed(() => !isMobile.value)
+
+onMounted(() => {
+  const checkMobile = () => {
+    isMobile.value = window.innerWidth <= 768 // You can adjust this breakpoint
+  }
+  
+  checkMobile()
+  window.addEventListener('resize', checkMobile)
+
+  return () => {
+    window.removeEventListener('resize', checkMobile)
+  }
+})
 </script>
 
 <template>
   <Layout>
     <template #home-hero-before>
       <div id="custom-content">
-        <ThreeScene />
+        <ThreeScene v-if="shouldRenderThreeScene" />
       </div>
     </template>
   </Layout>

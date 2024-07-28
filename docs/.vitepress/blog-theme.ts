@@ -33,6 +33,7 @@ const blogTheme = getThemeConfig({
       url: 'https://sugarat.top'
     },
   ],
+  darkTransition: true,
   comment: {
     repo: 'fan0607/chengziDiary',
     repoId: 'R_kgDOMYy8Xw',
@@ -66,6 +67,7 @@ const blogTheme = getThemeConfig({
   },
 
   // 主题色修改
+  // themeColor: 'el-blue',
   themeColor: 'el-blue',
 
   // 文章默认作者
