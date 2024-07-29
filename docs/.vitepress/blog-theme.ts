@@ -23,7 +23,7 @@ const blogTheme = getThemeConfig({
       des: '工作餐避坑',
       avatar:
         '/logo.png',
-      url: 'https://tidy-comet-d04.notion.site/d658760b55ce4da9a80742503a3735dc?pvs=74'
+      url: 'https://notion.fcnote.com'
     },
     {
       nickname: '粥里有勺糖',
