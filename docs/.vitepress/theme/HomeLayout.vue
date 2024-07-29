@@ -27,7 +27,7 @@ onMounted(() => {
   <Layout>
     <template #home-hero-before>
       <div id="custom-content">
-        <ThreeScene v-if="shouldRenderThreeScene" />
+        <!-- <ThreeScene v-if="shouldRenderThreeScene" /> -->
       </div>
     </template>
   </Layout>
