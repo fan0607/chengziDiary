@@ -11,7 +11,7 @@ const shouldRenderThreeScene = computed(() => !isMobile.value)
 
 onMounted(() => {
   const checkMobile = () => {
-    isMobile.value = window.innerWidth <= 768 // You can adjust this breakpoint
+    isMobile.value = window.innerWidth <= 768
   }
   
   checkMobile()

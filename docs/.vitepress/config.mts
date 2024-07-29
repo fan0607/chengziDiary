@@ -52,7 +52,6 @@ export default defineConfig({
         text: "今天吃什么",
         link: "https://tidy-comet-d04.notion.site/d658760b55ce4da9a80742503a3735dc?pvs=74",
       },
-      // { text: '关于作者', link: 'https://sugarat.top/aboutme.html' }
     ],
     socialLinks: [
       {
