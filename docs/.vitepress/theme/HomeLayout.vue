@@ -1,54 +1,25 @@
-<script setup>
-import { ref, onMounted, computed } from 'vue'
-import BlogTheme from '@sugarat/theme'
-import ThreeScene from './ThreeScene.vue'
-
-const { Layout } = BlogTheme
-
-const isMobile = ref(false)
-
-const shouldRenderThreeScene = computed(() => !isMobile.value)
-
-onMounted(() => {
-  const checkMobile = () => {
-    isMobile.value = window.innerWidth <= 768
-  }
-  
-  checkMobile()
-  window.addEventListener('resize', checkMobile)
-
-  return () => {
-    window.removeEventListener('resize', checkMobile)
-  }
-})
-</script>
-
 <template>
   <Layout>
-    <template #home-hero-before>
-      <div id="custom-content">
-        <!-- <ThreeScene v-if="shouldRenderThreeScene" /> -->
-      </div>
+    <!-- <template #layout-bottom>
+      <SparkChatPanel />
+    </template> -->
+    <template #layout-bottom>
+      <SparkChatPanel style="z-index: 100;" />
     </template>
   </Layout>
 </template>
 
-<style scoped>
-#custom-content {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: -1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+<script setup>
+import SparkChatPanel from '../../components/SparkChatPanel.vue'
+import { ref, onMounted, computed } from 'vue'
+import BlogTheme from '@sugarat/theme'
 
-#custom-content h1 {
-  color: white;
-  margin-bottom: 20px;
+const { Layout } = BlogTheme
+</script>
+
+<style>
+/* 确保聊天面板不会覆盖主要内容 */
+.vp-doc {
+  margin-right: 50px; /* 为切换按钮留出空间 */
 }
 </style>
