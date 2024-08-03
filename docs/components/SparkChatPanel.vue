@@ -6,7 +6,7 @@
 
     <div v-if="isOpen" class="chat-panel">
       <div class="chat-header">
-        <h3>橙子助手</h3>
+        <h3>橙CC</h3>
       </div>
       <div ref="messagesContainer" class="messages-container">
         <div v-for="(message, index) in messages" :key="index" :class="['message', { 'user-message': message.isUser }]">
