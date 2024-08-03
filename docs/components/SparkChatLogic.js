@@ -9,7 +9,7 @@ export function useSparkChat() {
     const isOpen = ref(false)
     const userInput = ref('')
     const messages = reactive([
-        { content: "聊会儿天呗", isUser: false },
+        { content: "hello啊！", isUser: false },
     ])
     const messagesContainer = ref(null)
     const instructions = ref(`

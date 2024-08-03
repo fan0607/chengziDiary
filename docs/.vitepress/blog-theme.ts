@@ -87,7 +87,7 @@ const blogTheme = getThemeConfig({
         content: '欢迎大家交流'
       }
     ],
-    duration: 0
+    duration: 60
   },
 })
 

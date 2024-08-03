@@ -49,7 +49,8 @@ export function connectToSparkAPI(query, instructions) {
             console.log('WebSocket connection opened');
             const data = {
                 header: { app_id: APPID },
-                parameter: { chat: { domain: "generalv3.5", temperature: 1.0, max_tokens: 4096 } },
+                // parameter: { chat: { domain: "generalv3.5", temperature: 1.0, max_tokens: 4096 } },
+                parameter: { chat: { domain: "4.0Ultra", temperature: 1.0, max_tokens: 4096 } },
                 payload: { 
                     message: { 
                         text: [
