@@ -7,7 +7,8 @@ const API_SECRET = 'OTNiNjMwOGNhMDQ4NzQ4MGE3YjhiNzY2'
 const API_KEY = '134631ce98a328390cd8d8bd6605aa5b'
 // const GPT_URL = 'wss://spark-api.xf-yun.com/v3.5/chat'
 const GPT_URL = 'wss://spark-api.xf-yun.com/v4.0/chat'
-
+// 全局变量用于存储对话历史
+let conversationHistory = [];
 
 function createUrl() {
     const host = new URL(GPT_URL).host;
@@ -18,12 +19,12 @@ function createUrl() {
     const signature = CryptoJS.enc.Base64.stringify(signatureSha);
     const authorizationOrigin = `api_key="${API_KEY}", algorithm="hmac-sha256", headers="host date request-line", signature="${signature}"`;
     const authorization = btoa(authorizationOrigin);
-  
+
     const url = new URL(GPT_URL);
     url.searchParams.append('authorization', authorization);
     url.searchParams.append('date', date);
     url.searchParams.append('host', host);
-  
+
     return url.toString();
 }
 
@@ -42,6 +43,10 @@ export function connectToSparkAPI(query, instructions) {
             ? `${instructions}\n\nRelevant blog content: ${relevantContent}`
             : instructions;
 
+        // 将当前用户输入和系统消息添加到对话历史
+        conversationHistory.push({ role: "system", content: enhancedInstructions });
+        conversationHistory.push({ role: "user", content: query });
+
         const ws = new WebSocket(url);
         let responseText = '';
 
@@ -49,14 +54,10 @@ export function connectToSparkAPI(query, instructions) {
             console.log('WebSocket connection opened');
             const data = {
                 header: { app_id: APPID },
-                // parameter: { chat: { domain: "generalv3.5", temperature: 1.0, max_tokens: 4096 } },
                 parameter: { chat: { domain: "4.0Ultra", temperature: 1.0, max_tokens: 4096 } },
                 payload: { 
                     message: { 
-                        text: [
-                            { role: "system", content: enhancedInstructions },
-                            { role: "user", content: query }
-                        ] 
+                        text: conversationHistory  // 发送整个对话历史
                     } 
                 }
             };
@@ -75,6 +76,8 @@ export function connectToSparkAPI(query, instructions) {
             const content = response.payload.choices.text[0].content;
             responseText += content;
             if (response.header.status === 2) {
+                // 将模型回复添加到对话历史
+                conversationHistory.push({ role: "assistant", content: responseText });
                 ws.close();
                 resolve(responseText);
             }

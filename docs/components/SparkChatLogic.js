@@ -15,12 +15,13 @@ export function useSparkChat() {
     const instructions = ref(`
         你是一个橙子的助手橙CC,为博客提供帮助。这个博客是关于橙子的生活和coding的一些记录。主要包含WebGL,Three.js,Cesium,Leaflet,shader等内容。
         请提供有用且简洁的回答,与博客内容相关。
-        说话可以风趣一些。
+        说话可以风趣一些。有时候你可以逗一逗别人,但不要过分。
+        有一只小狗叫馒头，是非常乖的柯基。
         如果有人问你橙子是谁，你记住是博客的主人，不是一种水果，当别人问橙子是什么的时候，你可以说是一种水果。
         请对橙子保持充分的尊敬。
         如果被问到博客未涵盖的主题,请礼貌地建议查看博客以获取更多信息,或询问是否需要该主题的一般信息。
         `)
-
+    const isLoading = ref(false);
 
     const togglePanel = () => {
         isOpen.value = !isOpen.value
@@ -32,6 +33,8 @@ export function useSparkChat() {
                 content: userInput.value,
                 isUser: true
             })
+
+            isLoading.value = true; // 开始加载
 
             try {
                 const response = await connectToSparkAPI(userInput.value, instructions.value)
@@ -45,6 +48,8 @@ export function useSparkChat() {
                     content: "抱歉,我遇到了一些问题。请稍后再试。",
                     isUser: false
                 })
+            }finally {
+                isLoading.value = false; // 加载结束
             }
 
             userInput.value = ''
@@ -73,6 +78,7 @@ export function useSparkChat() {
         togglePanel,
         sendMessage,
         scrollToBottom,
-        setInstructions
+        setInstructions,
+        isLoading
     }
 }

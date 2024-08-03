@@ -11,9 +11,8 @@
       <div ref="messagesContainer" class="messages-container">
         <div v-for="(message, index) in messages" :key="index" :class="['message', { 'user-message': message.isUser }]">
           <img :src="message.isUser ? '/logo.png' : '/czzs.png'" :alt="message.isUser ? 'User Avatar' : 'AI Avatar'" class="message-avatar">
-          <div class="message-content">
-            {{ message.content }}
-          </div>
+          <!-- 使用 v-html 渲染消息内容 -->
+          <div class="message-content" v-html="message.isUser ? message.content : renderMarkdown(message.content)"></div>
         </div>
         <div v-if="isLoading" class="message">
           <img src="/czzs.png" alt="AI Avatar" class="message-avatar">
@@ -41,6 +40,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useSparkChat } from './SparkChatLogic'
+import MarkdownIt from 'markdown-it'
 
 const {
     isOpen,
@@ -51,10 +51,15 @@ const {
     togglePanel,
     sendMessage: originalSendMessage,
     setInstructions,
-    isLoading
+    isLoading // 添加 isLoading
 } = useSparkChat()
 
 const showInstructions = ref(false)
+const md = new MarkdownIt()
+
+const renderMarkdown = (content) => {
+    return md.render(content)
+}
 
 const updateInstructions = () => {
     setInstructions(instructions.value)
