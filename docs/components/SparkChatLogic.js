@@ -8,7 +8,7 @@ import { processBlogPost } from "./blogProcessor.js";
 export function useSparkChat() {
   const isOpen = ref(false);
   const userInput = ref("");
-  const messages = reactive([{ content: "hello啊！", isUser: false }]);
+  const messages = reactive([{ content: "你好，我是橙CC，橙子的助手，请问我有什么能帮到你的吗", isUser: false }]);
   const messagesContainer = ref(null);
   /* const instructions = ref(`
         你是一个橙子的助手橙CC,为博客提供帮助。这个博客是关于橙子的生活和coding的一些记录。主要包含WebGL,Three.js,Cesium,Leaflet,shader等内容。

@@ -11,11 +11,16 @@ sticky: 1
 # 自定义控制贴图
 ## 简单的贴图控制(repeat属性)
 Cesium 的 primitives 在贴图时，经常会遇到贴图被过分拉伸的问题，解决方法也很简单——计算元素的**宽高比**，通过宽高比控制贴图的重复次数(`repeat`)。以最简单的Primitive对象为例，通过计算出贴图的宽高比例`xyRatio`后，得到一个以某一边（宽或高）为主的贴图。
+
+`被过分拉伸:`
 ![被过分拉伸](../../public/Pasted%20image%2020240820100150.png)
+
+`按比例拉伸:`
 ![按比例拉伸](../../public/Pasted%20image%2020240820100808.png)
-## 理解Primitive对象的材质和纹理ss
+
+## 理解Primitive对象的材质和纹理
 在Cesium中，Primitive对象的外观主要通过其材质（Material）来定义。材质不仅包含了颜色信息，还可以包含纹理（Texture）。纹理的应用方式直接影响了贴图的显示效果，包括拉伸、重复等属性。
-。
+
 ## 控制贴图比例的方法
 
 ### 1. 使用textureCoordinates
@@ -70,7 +75,7 @@ var primitive = scene.primitives.add(new Cesium.Primitive({
 ```
 :::
 
-在这个例子中，我们手动设置了`textureCoordinates`，确保纹理完美地映射到几何体上，避免了拉伸。
+在例子中手动设置了`textureCoordinates`，确保纹理完美地映射到几何体上，避免了拉伸。
 
 ### 2. 调整材质的repeat属性
 
@@ -88,7 +93,7 @@ var material = new Cesium.Material({
 });
 ```
 :::
-这里，我们将纹理在水平方向重复2次，垂直方向保持不变，在实际应用时，我们更常用geometry对象的实际宽高计算比例，然后用比例去控制拉伸的程度。
+这里，我们将纹理在水平方向重复2次，垂直方向保持不变；在实际应用时，我们更常用geometry对象的实际宽高计算比例，然后用比例去控制拉伸的程度。
 
 ::: details
 ```js
@@ -99,7 +104,7 @@ const appearance = new Cesium.MaterialAppearance({
       type: "DiffuseMap",
 
       uniforms: {
-        image: image,
+        image: '/texture.jpg',
         repeat: new Cesium.Cartesian2(xyRatio, 1.0)
       },
     }
@@ -186,10 +191,9 @@ viewer.camera.setView({
 });
 ```
 :::
-在这个例子中创建了一个矩形平面，通过设置材质的`repeat`属性来控制贴图的重复次数，从而去调整贴图的比例。但这样的控制方法并不算精细，结合前面所说的shader，我们再试一试用shader实现一遍。
+在这个例子中创建了一个矩形平面，通过设置材质的`repeat`属性来控制贴图的重复次数，从而去调整贴图的比例。但这样的控制方法并不精细，结合前面所说的shader，我们再试一试用shader实现一遍。
 
 ## 实际案例演示二
-有时间推荐自己试着写一遍。
 
 步骤为：
 - 加载纹理
@@ -290,8 +294,9 @@ const appearance = new Cesium.MaterialAppearance({
 :::
 
 ## 性能考虑和最佳实践
-
+:::tip
 1. 尽量使用2的幂次方大小的纹理图片，这有助于提高渲染性能。
 2. 对于大型场景，考虑使用纹理图集（Texture Atlas）来减少draw calls。
 3. 在可能的情况下，预先处理纹理图片以适应目标几何体，而不是在运行时进行大量的拉伸操作。
 4. 使用适当的压缩格式（如DXT）来减少纹理内存占用。
+:::
